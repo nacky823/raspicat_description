@@ -3,7 +3,48 @@
 
   <xacro:macro name="lidar_gazebo" params="lidar_frame min_angle max_angle min_range max_range visualize">
     <gazebo reference="${lidar_frame}">
-      <sensor type="ray" name="${lidar_frame}_sensor">
+
+      <sensor name="hls_lfcd_lds" type="ray">
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <pose>-0.032 0 0.171 0 0 0</pose>
+        <update_rate>5</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>300</samples>
+              <resolution>1.0</resolution>
+              <min_angle>-3.0523</min_angle>
+              <max_angle>3.0523</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>100</samples>
+              <resolution>1.0</resolution>
+              <min_angle>0.000</min_angle>
+              <max_angle>0.523</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.100000</min>
+            <max>40.0</max>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="pc2" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace>/ray</namespace>
+            <remapping>~/out:=pointcloud2</remapping>
+          </ros>
+          <output_type>sensor_msgs/PointCloud2</output_type>
+          <frame_name>lidar_link</frame_name>
+        </plugin>
+      </sensor>
+
+      <!-- sensor type="ray" name="${lidar_frame}_sensor">
         <pose>0 0 0 0 0 0</pose>
         <visualize>${visualize}</visualize>
         <update_rate>30</update_rate>
@@ -34,7 +75,8 @@
           <frame_name>lidar_link</frame_name>
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
-      </sensor>
+      </sensor -->
+
     </gazebo>
   </xacro:macro>
 </robot>
