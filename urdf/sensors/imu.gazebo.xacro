@@ -52,6 +52,7 @@
           <ros>
             <remapping>~/out:=/${prefix}/data_raw</remapping>
           </ros>
+          <frame_name>base_link</frame_name>
         </plugin>
       </sensor>
     </gazebo>

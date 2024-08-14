@@ -96,7 +96,7 @@
 
   <!-- Imu -->
   <xacro:imu_sensor prefix="imu" parent="base_link">
-    <origin xyz="0 0 0.14" rpy="${M_PI} 0 0"/>
+    <origin xyz="0 0 0.14" rpy="0 0 0"/>
   </xacro:imu_sensor>
 
   <!-- =============== Gazebo =============== -->
