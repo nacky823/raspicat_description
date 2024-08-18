@@ -50,9 +50,9 @@
         </imu>
         <plugin name="${prefix}_controller" filename="libgazebo_ros_imu_sensor.so">
           <ros>
-            <remapping>~/out:=/${prefix}/data_raw</remapping>
+            <remapping>~/out:=/livox/${prefix}</remapping>
           </ros>
-          <frame_name>base_link</frame_name>
+          <frame_name>livox_frame</frame_name>
         </plugin>
       </sensor>
     </gazebo>

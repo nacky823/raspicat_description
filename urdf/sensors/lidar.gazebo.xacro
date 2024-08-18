@@ -50,11 +50,10 @@
         </plugin -->
         <plugin name="pc2" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <namespace>/ray</namespace>
-            <remapping>~/out:=pointcloud2</remapping>
+            <remapping>~/out:=/livox/lidar</remapping>
           </ros>
           <output_type>sensor_msgs/PointCloud2</output_type>
-          <frame_name>base_link</frame_name>
+          <frame_name>livox_frame</frame_name>
         </plugin>
       </sensor>
 
